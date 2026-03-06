@@ -1,10 +1,13 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Start the Nginx Proxy Manager MCP server
-# s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-bashio::log.info "Starting Nginx Proxy Manager MCP Add-on v$(bashio::addon.version)..."
+VERSION=$(bashio::addon.version)
+
+bashio::log.info "============================================"
+bashio::log.info "Nginx Proxy Manager MCP Add-on v${VERSION}"
+bashio::log.info "============================================"
 
 export NPM_API_URL=$(bashio::config 'npm_api_url')
 export NPM_IDENTITY=$(bashio::config 'npm_identity')
@@ -19,6 +22,7 @@ fi
 
 bashio::log.info "NPM API:  ${NPM_API_URL}"
 bashio::log.info "Identity: ${NPM_IDENTITY}"
-bashio::log.info "MCP:      http on ${NPM_MCP_HOST}:${NPM_MCP_PORT}"
+bashio::log.info "MCP:      http://${NPM_MCP_HOST}:${NPM_MCP_PORT}/mcp"
+bashio::log.info "============================================"
 
 exec python3 -m npm_mcp.main
