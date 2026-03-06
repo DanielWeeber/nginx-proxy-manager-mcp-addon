@@ -10,6 +10,7 @@ NPM_IDENTITY=$(bashio::config 'npm_identity')
 NPM_SECRET=$(bashio::config 'npm_secret')
 MCP_HOST=$(bashio::config 'mcp_host')
 MCP_PORT=$(bashio::config 'mcp_port')
+MCP_TRANSPORT=$(bashio::config 'mcp_transport')
 
 NPM_PROXY_DEFAULTS=""
 if bashio::config.has_value 'npm_proxy_defaults'; then
@@ -17,14 +18,14 @@ if bashio::config.has_value 'npm_proxy_defaults'; then
 fi
 
 bashio::log.info "NPM API URL: ${NPM_API_URL}"
-bashio::log.info "MCP listening on ${MCP_HOST}:${MCP_PORT}"
+bashio::log.info "MCP transport: ${MCP_TRANSPORT}, listening on ${MCP_HOST}:${MCP_PORT}"
 
 export NPM_API_URL="${NPM_API_URL}"
 export NPM_IDENTITY="${NPM_IDENTITY}"
 export NPM_SECRET="${NPM_SECRET}"
 export NPM_MCP_HOST="${MCP_HOST}"
 export NPM_MCP_PORT="${MCP_PORT}"
-export NPM_MCP_TRANSPORT="http"
+export NPM_MCP_TRANSPORT="${MCP_TRANSPORT}"
 
 if [ -n "${NPM_PROXY_DEFAULTS}" ]; then
     export NPM_PROXY_DEFAULTS="${NPM_PROXY_DEFAULTS}"

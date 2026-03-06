@@ -14,6 +14,9 @@ configuration:
   mcp_port:
     name: MCP Port
     description: "TCP port the MCP HTTP server will listen on (default: 9115)"
+  mcp_transport:
+    name: MCP Transport
+    description: "Transport mode for the MCP server. Use 'http' for HTTP/SSE transport (default), 'stdio' for stdio transport."
   npm_proxy_defaults:
     name: Proxy Host Defaults (JSON)
     description: "Optional JSON string with default values for create_proxy_host"

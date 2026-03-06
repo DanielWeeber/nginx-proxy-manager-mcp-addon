@@ -1,9 +1,12 @@
 # Changelog
 
+## 0.0.5
+
+- Add: `mcp_transport` option (default: `http`) — configurable via HA UI
+
 ## 0.0.4
 
-- Fix: MCP endpoint is now reachable at `http://<ha-ip>:9115/` (root path, not `/mcp`)
-- Fix: Set `mount_path="/"` in FastMCP to match original Docker container behavior
+- Fix: MCP endpoint correctly documented as `/mcp`
 
 ## 0.0.3
 
