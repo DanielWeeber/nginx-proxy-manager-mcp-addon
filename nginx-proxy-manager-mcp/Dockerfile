@@ -1,7 +1,8 @@
-ARG BUILD_FROM
 FROM ghcr.io/b3nw/nginx-proxy-manager-mcp:latest
 
-# Copy bashio entrypoint script that reads HA options and sets env vars
+# Add jq for parsing /data/options.json and our entrypoint
+RUN apt-get update && apt-get install -y --no-install-recommends jq && rm -rf /var/lib/apt/lists/*
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 

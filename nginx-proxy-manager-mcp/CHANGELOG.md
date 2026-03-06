@@ -1,13 +1,18 @@
 # Changelog
 
+## 0.2.0
+
+- Refactor: Thin wrapper — uses upstream `ghcr.io/b3nw/nginx-proxy-manager-mcp:latest` directly
+- No more custom Python source, no s6-overlay
+- entrypoint.sh reads /data/options.json and passes env vars to upstream image
+
 ## 0.1.0
 
-- Refactor: Use upstream image ghcr.io/b3nw/nginx-proxy-manager-mcp:latest directly
-- No more custom Python build — just a thin wrapper around the upstream container
+- First attempt at using upstream image (incomplete)
 
 ## 0.0.6
 
-- Fix: Switch default transport to `sse` for better compatibility with mcp-remote
+- Fix: Switch default transport to `sse`
 
 ## 0.0.5
 
