@@ -1,7 +1,7 @@
 name: Nginx Proxy Manager MCP
-version: "0.2.3"
+version: "0.3.0"
 slug: nginx_proxy_manager_mcp
-description: MCP server for Nginx Proxy Manager – allows AI assistants to manage NPM via the Model Context Protocol
+description: MCP server for Nginx Proxy Manager – wraps ghcr.io/b3nw/nginx-proxy-manager-mcp
 url: "https://github.com/DanielWeeber/nginx-proxy-manager-mcp-addon"
 arch:
   - aarch64
@@ -18,7 +18,6 @@ options:
   npm_secret: "changeme"
   mcp_port: 9115
   mcp_host: "0.0.0.0"
-  mcp_transport: "http"
   npm_proxy_defaults: ""
 schema:
   npm_api_url: str
@@ -26,5 +25,4 @@ schema:
   npm_secret: str
   mcp_port: int
   mcp_host: str
-  mcp_transport: str
   npm_proxy_defaults: str?

@@ -1,19 +1,15 @@
 # Changelog
 
-## 0.2.3
+## 0.3.0
 
-- Fix: Change startup from 'application' to 'services' so HA tracks state correctly
-- Fix: Explicitly EXPOSE 9115 in Dockerfile (upstream exposes 8000)
-- Fix: Remove Docker HEALTHCHECK (HA Supervisor ignores it anyway)
+- Simplify: Minimal Dockerfile, only adds jq + entrypoint.sh on top of b3nw image
+- Remove mcp_transport option (always http, as upstream only supports http/stdio)
+- Startup: services (correct HA lifecycle)
 
-## 0.2.2
+## 0.2.x
 
-- Fix: Add startup: application and HEALTHCHECK
-
-## 0.2.1
-
-- Add: Verbose startup logging
+- Various attempts at fixing HA state tracking and SSE transport
 
 ## 0.2.0
 
-- Refactor: Thin wrapper using upstream b3nw image directly
+- Initial thin wrapper using upstream b3nw image
