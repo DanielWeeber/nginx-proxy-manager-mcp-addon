@@ -1,18 +1,14 @@
 # Changelog
 
-## 0.4.3
+## 0.5.0
 
-- Fix: chmod +x on s6 run/finish scripts in Dockerfile
+- Fix: Multi-stage build - copy Python + npm_mcp from b3nw image into HA base image
+- This gives us s6-overlay (correct HA state) AND the b3nw HTTP transport
 
-## 0.4.2
+## 0.4.x
 
-- Fix: Correct base image tag (3.13-alpine3.21)
-
-## 0.4.1
-
-- Fix: pip3 instead of uv
+- Failed attempts: PyPI package (v2.14.0) only supports stdio, not HTTP
 
 ## 0.4.0
 
 - Refactor: HA base-python image + s6-overlay
-- Proper s6 run/finish scripts for correct HA state tracking
