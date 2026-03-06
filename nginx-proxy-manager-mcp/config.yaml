@@ -1,5 +1,5 @@
 name: Nginx Proxy Manager MCP
-version: "0.0.2"
+version: "0.0.3"
 slug: nginx_proxy_manager_mcp
 description: MCP server for Nginx Proxy Manager – allows AI assistants to manage NPM via the Model Context Protocol
 url: "https://github.com/DanielWeeber/nginx-proxy-manager-mcp-addon"

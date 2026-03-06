@@ -3,6 +3,8 @@
 # Start the Nginx Proxy Manager MCP server
 # ==============================================================================
 
+bashio::log.info "Starting Nginx Proxy Manager MCP Add-on v$(bashio::addon.version)..."
+
 NPM_API_URL=$(bashio::config 'npm_api_url')
 NPM_IDENTITY=$(bashio::config 'npm_identity')
 NPM_SECRET=$(bashio::config 'npm_secret')
@@ -14,7 +16,6 @@ if bashio::config.has_value 'npm_proxy_defaults'; then
     NPM_PROXY_DEFAULTS=$(bashio::config 'npm_proxy_defaults')
 fi
 
-bashio::log.info "Starting Nginx Proxy Manager MCP Server..."
 bashio::log.info "NPM API URL: ${NPM_API_URL}"
 bashio::log.info "MCP listening on ${MCP_HOST}:${MCP_PORT}"
 

@@ -18,8 +18,8 @@ ENV PYTHONUNBUFFERED=1 \
     NPM_MCP_PORT=9115
 
 COPY rootfs /
-
-RUN chmod a+x /etc/services.d/npm-mcp/run \
-              /etc/services.d/npm-mcp/finish
+RUN chmod a+x \
+    /etc/services.d/npm-mcp/run \
+    /etc/services.d/npm-mcp/finish
 
 EXPOSE 9115
