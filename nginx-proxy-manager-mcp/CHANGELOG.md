@@ -1,19 +1,19 @@
 # Changelog
 
+## 0.2.3
+
+- Fix: Change startup from 'application' to 'services' so HA tracks state correctly
+- Fix: Explicitly EXPOSE 9115 in Dockerfile (upstream exposes 8000)
+- Fix: Remove Docker HEALTHCHECK (HA Supervisor ignores it anyway)
+
 ## 0.2.2
 
-- Fix: Add `startup: application` to config.yaml so HA correctly tracks container state
-- Fix: Add HEALTHCHECK to Dockerfile so HA knows when container is truly ready
-- Add: curl installed for healthcheck
+- Fix: Add startup: application and HEALTHCHECK
 
 ## 0.2.1
 
-- Add: Verbose startup logging (all env vars except password)
-- Add: Config validation with error output if options.json unreadable
-- Fix: Default mcp_transport back to 'http'
+- Add: Verbose startup logging
 
 ## 0.2.0
 
-- Refactor: Thin wrapper — uses upstream `ghcr.io/b3nw/nginx-proxy-manager-mcp:latest` directly
-- No more custom Python source, no s6-overlay
-- entrypoint.sh reads /data/options.json and passes env vars to upstream image
+- Refactor: Thin wrapper using upstream b3nw image directly
