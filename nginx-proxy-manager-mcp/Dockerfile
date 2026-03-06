@@ -1,8 +1,8 @@
 ARG BUILD_FROM
 FROM ghcr.io/b3nw/nginx-proxy-manager-mcp:latest
 
-# Copy s6-overlay service scripts from HA base
-COPY rootfs /
-RUN chmod a+x \
-    /etc/services.d/npm-mcp/run \
-    /etc/services.d/npm-mcp/finish
+# Copy bashio entrypoint script that reads HA options and sets env vars
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
