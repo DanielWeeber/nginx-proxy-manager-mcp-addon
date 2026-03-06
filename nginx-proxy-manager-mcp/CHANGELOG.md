@@ -1,19 +1,19 @@
 # Changelog
 
+## 0.7.0
+
+- Revert to simple approach: b3nw image + run.sh + CMD
+- No s6-overlay download needed (GitHub not reachable from build)
+- HA Supervisor handles process lifecycle via init: false + startup: services
+
 ## 0.6.0
 
-- Fix: Install s6-overlay + bashio directly into b3nw Debian image
-- No more cross-architecture library issues (glibc vs musl)
-- Use s6-overlay v3 service structure (s6-rc.d)
+- Failed: s6-overlay download from GitHub not reachable during build
 
 ## 0.5.x
 
-- Failed: Multi-stage build - b3nw (glibc) Python binary incompatible with Alpine (musl)
+- Failed: glibc/musl binary incompatibility
 
 ## 0.4.x
 
-- Failed: PyPI package v2.14.0 only supports stdio, not HTTP
-
-## 0.4.0
-
-- Refactor: HA base-python image + s6-overlay
+- Failed: PyPI package only supports stdio transport
