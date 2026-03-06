@@ -20,7 +20,7 @@ deinen Nginx Proxy Manager steuern können.
 Nach dem Start ist der MCP-Server unter folgender Adresse erreichbar:
 
 ```
-http://<homeassistant-ip>:9115/
+http://<homeassistant-ip>:9115/mcp
 ```
 
 ## Claude Desktop Konfiguration
@@ -29,7 +29,7 @@ http://<homeassistant-ip>:9115/
 {
   "mcpServers": {
     "nginx-proxy-manager": {
-      "url": "http://<homeassistant-ip>:9115/"
+      "url": "http://<homeassistant-ip>:9115/mcp"
     }
   }
 }

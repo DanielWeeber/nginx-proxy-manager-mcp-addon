@@ -56,21 +56,6 @@ http://<your-homeassistant-ip>:9115/mcp
 }
 ```
 
-## Repository structure
-
-```
-nginx-proxy-manager-mcp-addon/
-├── repository.yaml
-└── nginx-proxy-manager-mcp/
-    ├── config.yaml
-    ├── build.yaml
-    ├── Dockerfile
-    ├── translations/en.yaml
-    ├── DOCS.md / CHANGELOG.md
-    ├── npm_mcp_src/
-    └── rootfs/etc/services.d/npm-mcp/
-```
-
 ## Supported architectures
 
 - `amd64`
