@@ -1,15 +1,12 @@
 # Changelog
 
-## 0.3.0
+## 0.4.0
 
-- Simplify: Minimal Dockerfile, only adds jq + entrypoint.sh on top of b3nw image
-- Remove mcp_transport option (always http, as upstream only supports http/stdio)
-- Startup: services (correct HA lifecycle)
+- Refactor: Use official HA base-python image + s6-overlay (like example add-on)
+- Fix: HA now correctly tracks container state (no more stuck 'Starten')
+- Install nginx-proxy-manager-mcp from PyPI via uv
+- Proper s6 run/finish scripts
 
-## 0.2.x
+## 0.3.0 and earlier
 
-- Various attempts at fixing HA state tracking and SSE transport
-
-## 0.2.0
-
-- Initial thin wrapper using upstream b3nw image
+- Various attempts using upstream b3nw image directly (s6 lifecycle issues)

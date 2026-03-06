@@ -1,8 +1,12 @@
-FROM ghcr.io/b3nw/nginx-proxy-manager-mcp:latest
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
-RUN apt-get update && apt-get install -y --no-install-recommends jq && rm -rf /var/lib/apt/lists/*
+# Install Python, uv, and jq
+RUN apk add --no-cache python3 py3-pip jq curl \
+    && curl -LsSf https://astral.sh/uv/install.sh | sh
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# Install nginx-proxy-manager-mcp from PyPI
+RUN /root/.local/bin/uv pip install --system nginx-proxy-manager-mcp
 
-ENTRYPOINT ["/entrypoint.sh"]
+# Copy s6-overlay service scripts
+COPY rootfs /
