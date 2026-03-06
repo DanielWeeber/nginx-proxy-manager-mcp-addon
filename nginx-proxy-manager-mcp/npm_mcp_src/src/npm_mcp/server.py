@@ -39,6 +39,7 @@ mcp = FastMCP(
     lifespan=lifespan,
     host=settings.mcp_host,
     port=settings.mcp_port,
+    mount_path="/",
 )
 
 

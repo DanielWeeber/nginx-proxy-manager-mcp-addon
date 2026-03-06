@@ -13,12 +13,14 @@ deinen Nginx Proxy Manager steuern können.
 | `npm_secret` | Passwort für den NPM-Login |
 | `mcp_host` | Bind-Adresse (Standard: `0.0.0.0`) |
 | `mcp_port` | Port des MCP-Servers (Standard: `9115`) |
-| `npm_proxy_defaults` | Optionale JSON-Standardwerte für `create_proxy_host` |
+| `npm_proxy_defaults` | Optionale JSON-Standardwerte für `create_proxy_host`, z.B. `{"certificate_id": 24, "ssl_forced": true}` |
 
 ## MCP-Endpunkt
 
+Nach dem Start ist der MCP-Server unter folgender Adresse erreichbar:
+
 ```
-http://<homeassistant-ip>:9115/mcp
+http://<homeassistant-ip>:9115/
 ```
 
 ## Claude Desktop Konfiguration
@@ -27,8 +29,14 @@ http://<homeassistant-ip>:9115/mcp
 {
   "mcpServers": {
     "nginx-proxy-manager": {
-      "url": "http://<homeassistant-ip>:9115/mcp"
+      "url": "http://<homeassistant-ip>:9115/"
     }
   }
 }
 ```
+
+## Hinweise
+
+- Der NPM muss von Home Assistant aus erreichbar sein
+- Port `9115` muss in der Firewall freigegeben sein, wenn du von außen darauf zugreifen möchtest
+- Das Add-on nutzt ausschließlich HTTP-Transport (kein stdio)

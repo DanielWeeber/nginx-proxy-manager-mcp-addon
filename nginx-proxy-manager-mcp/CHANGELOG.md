@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.4
+
+- Fix: MCP endpoint is now reachable at `http://<ha-ip>:9115/` (root path, not `/mcp`)
+- Fix: Set `mount_path="/"` in FastMCP to match original Docker container behavior
+
 ## 0.0.3
 
 - Fix: s6 service scripts now correctly marked as executable (chmod in Dockerfile)
