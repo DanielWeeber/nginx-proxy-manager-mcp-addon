@@ -1,8 +1,7 @@
 # Nginx Proxy Manager MCP – Home Assistant Add-on
 
-Dieses Add-on startet den [nginx-proxy-manager-mcp](https://github.com/b3nw/nginx-proxy-manager-mcp) Server
-direkt in Home Assistant. Es stellt einen MCP HTTP-Server bereit, über den KI-Assistenten (z.B. Claude)
-deinen Nginx Proxy Manager steuern können.
+Dieses Add-on startet den [nginx-proxy-manager-mcp](https://github.com/b3nw/nginx-proxy-manager-mcp) Container
+direkt in Home Assistant.
 
 ## Konfiguration
 
@@ -13,21 +12,13 @@ deinen Nginx Proxy Manager steuern können.
 | `npm_secret` | Passwort für den NPM-Login |
 | `mcp_host` | Bind-Adresse (Standard: `0.0.0.0`) |
 | `mcp_port` | Port des MCP-Servers (Standard: `9115`) |
-| `mcp_transport` | Transport-Modus: `sse` (Standard) oder `streamable-http` |
+| `mcp_transport` | Transport-Modus: `sse` (Standard) oder `http` |
 | `npm_proxy_defaults` | Optionale JSON-Standardwerte für `create_proxy_host` |
 
 ## MCP-Endpunkt
 
-Im SSE-Modus (Standard):
-
 ```
 http://<homeassistant-ip>:9115/sse
-```
-
-Im streamable-http Modus:
-
-```
-http://<homeassistant-ip>:9115/mcp
 ```
 
 ## Claude Desktop Konfiguration
@@ -46,8 +37,3 @@ http://<homeassistant-ip>:9115/mcp
   }
 }
 ```
-
-## Hinweise
-
-- Der NPM muss von Home Assistant aus erreichbar sein
-- Port `9115` muss in der Firewall freigegeben sein, wenn du von außen darauf zugreifen möchtest

@@ -1,34 +1,22 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# Start the Nginx Proxy Manager MCP server
+# Configure and start the Nginx Proxy Manager MCP server
 # ==============================================================================
 
-bashio::log.info "Starting Nginx Proxy Manager MCP Add-on v$(bashio::addon.version)..."
+bashio::log.info "Configuring Nginx Proxy Manager MCP Add-on v$(bashio::addon.version)..."
 
-NPM_API_URL=$(bashio::config 'npm_api_url')
-NPM_IDENTITY=$(bashio::config 'npm_identity')
-NPM_SECRET=$(bashio::config 'npm_secret')
-MCP_HOST=$(bashio::config 'mcp_host')
-MCP_PORT=$(bashio::config 'mcp_port')
-MCP_TRANSPORT=$(bashio::config 'mcp_transport')
+export NPM_API_URL=$(bashio::config 'npm_api_url')
+export NPM_IDENTITY=$(bashio::config 'npm_identity')
+export NPM_SECRET=$(bashio::config 'npm_secret')
+export NPM_MCP_HOST=$(bashio::config 'mcp_host')
+export NPM_MCP_PORT=$(bashio::config 'mcp_port')
+export NPM_MCP_TRANSPORT=$(bashio::config 'mcp_transport')
 
-NPM_PROXY_DEFAULTS=""
 if bashio::config.has_value 'npm_proxy_defaults'; then
-    NPM_PROXY_DEFAULTS=$(bashio::config 'npm_proxy_defaults')
+    export NPM_PROXY_DEFAULTS=$(bashio::config 'npm_proxy_defaults')
 fi
 
-bashio::log.info "NPM API URL: ${NPM_API_URL}"
-bashio::log.info "MCP transport: ${MCP_TRANSPORT}, listening on ${MCP_HOST}:${MCP_PORT}"
-
-export NPM_API_URL="${NPM_API_URL}"
-export NPM_IDENTITY="${NPM_IDENTITY}"
-export NPM_SECRET="${NPM_SECRET}"
-export NPM_MCP_HOST="${MCP_HOST}"
-export NPM_MCP_PORT="${MCP_PORT}"
-export NPM_MCP_TRANSPORT="${MCP_TRANSPORT}"
-
-if [ -n "${NPM_PROXY_DEFAULTS}" ]; then
-    export NPM_PROXY_DEFAULTS="${NPM_PROXY_DEFAULTS}"
-fi
+bashio::log.info "NPM API: ${NPM_API_URL}"
+bashio::log.info "MCP: ${NPM_MCP_TRANSPORT} on ${NPM_MCP_HOST}:${NPM_MCP_PORT}"
 
 exec python3 -m npm_mcp.main
