@@ -2,8 +2,7 @@
 set -e
 
 OPTS=/data/options.json
-
-VERSION=$(cat /data/options.json 2>/dev/null | jq -r '.version // "unknown"' 2>/dev/null || echo "unknown")
+VERSION=$(bashio::addon.version 2>/dev/null || jq -r '.version // "unknown"' /data/addon_config.json 2>/dev/null || echo "0.7.2")
 
 export NPM_API_URL=$(jq -r '.npm_api_url' "$OPTS")
 export NPM_IDENTITY=$(jq -r '.npm_identity' "$OPTS")
@@ -16,7 +15,7 @@ DEFAULTS=$(jq -r '.npm_proxy_defaults // empty' "$OPTS")
 [ -n "$DEFAULTS" ] && export NPM_PROXY_DEFAULTS="$DEFAULTS"
 
 echo "[INFO] ============================================"
-echo "[INFO] Nginx Proxy Manager MCP Add-on v0.7.0"
+echo "[INFO] Nginx Proxy Manager MCP Add-on v${VERSION}"
 echo "[INFO] ============================================"
 echo "[INFO] NPM API:  ${NPM_API_URL}"
 echo "[INFO] Identity: ${NPM_IDENTITY}"
