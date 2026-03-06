@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.6
+
+- Fix: Switch default transport to `sse` for better compatibility with mcp-remote
+- Add: `sse` as supported transport option (endpoint: `/sse`)
+- Docs: Updated endpoint documentation
+
 ## 0.0.5
 
 - Add: `mcp_transport` option (default: `http`) — configurable via HA UI
@@ -16,6 +22,3 @@
 ## 0.0.2
 
 - Initial Home Assistant add-on release
-- Based on nginx-proxy-manager-mcp v0.0.2 by b3nw
-- Supports HTTP transport mode on configurable port
-- All NPM connection settings configurable via HA UI

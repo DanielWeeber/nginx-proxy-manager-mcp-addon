@@ -16,7 +16,7 @@ def setup_logging() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="NPM MCP Server")
-    parser.add_argument("--transport", choices=["stdio", "http"], default=settings.mcp_transport)
+    parser.add_argument("--transport", choices=["stdio", "http", "sse"], default=settings.mcp_transport)
     parser.add_argument("--host", default=settings.mcp_host)
     parser.add_argument("--port", type=int, default=settings.mcp_port)
     args = parser.parse_args()
@@ -28,8 +28,11 @@ def main() -> None:
     if args.transport == "stdio":
         logger.info("Starting MCP server in stdio mode")
         mcp.run(transport="stdio")
+    elif args.transport == "sse":
+        logger.info(f"Starting MCP server in SSE mode on {settings.mcp_host}:{settings.mcp_port}")
+        mcp.run(transport="sse")
     else:
-        logger.info(f"Starting MCP server in HTTP mode on {settings.mcp_host}:{settings.mcp_port}")
+        logger.info(f"Starting MCP server in streamable-http mode on {settings.mcp_host}:{settings.mcp_port}")
         mcp.run(transport="streamable-http")
 
 
