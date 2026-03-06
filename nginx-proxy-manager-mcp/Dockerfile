@@ -19,4 +19,7 @@ ENV PYTHONUNBUFFERED=1 \
 
 COPY rootfs /
 
+RUN chmod a+x /etc/services.d/npm-mcp/run \
+              /etc/services.d/npm-mcp/finish
+
 EXPOSE 9115
