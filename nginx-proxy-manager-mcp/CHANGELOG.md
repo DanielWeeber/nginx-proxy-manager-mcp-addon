@@ -1,14 +1,19 @@
 # Changelog
 
-## 0.5.1
+## 0.6.0
 
-- Fix: Copy /usr/local/lib instead of specific binaries (uvicorn is a module, not a binary)
-- Fix: Copy entire python lib directory from b3nw image
+- Fix: Install s6-overlay + bashio directly into b3nw Debian image
+- No more cross-architecture library issues (glibc vs musl)
+- Use s6-overlay v3 service structure (s6-rc.d)
 
-## 0.5.0
+## 0.5.x
 
-- Multi-stage build: b3nw Python into HA base image for s6-overlay support
+- Failed: Multi-stage build - b3nw (glibc) Python binary incompatible with Alpine (musl)
 
 ## 0.4.x
 
-- Failed attempts: PyPI package (v2.14.0) only supports stdio, not HTTP
+- Failed: PyPI package v2.14.0 only supports stdio, not HTTP
+
+## 0.4.0
+
+- Refactor: HA base-python image + s6-overlay

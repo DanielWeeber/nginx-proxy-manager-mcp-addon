@@ -1,0 +1,28 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start the Nginx Proxy Manager MCP server
+# ==============================================================================
+
+VERSION=$(bashio::addon.version)
+
+bashio::log.info "============================================"
+bashio::log.info "Nginx Proxy Manager MCP Add-on v${VERSION}"
+bashio::log.info "============================================"
+
+export NPM_API_URL=$(bashio::config 'npm_api_url')
+export NPM_IDENTITY=$(bashio::config 'npm_identity')
+export NPM_SECRET=$(bashio::config 'npm_secret')
+export NPM_MCP_HOST=$(bashio::config 'mcp_host')
+export NPM_MCP_PORT=$(bashio::config 'mcp_port')
+export NPM_MCP_TRANSPORT=http
+
+if bashio::config.has_value 'npm_proxy_defaults'; then
+    export NPM_PROXY_DEFAULTS=$(bashio::config 'npm_proxy_defaults')
+fi
+
+bashio::log.info "NPM API:  ${NPM_API_URL}"
+bashio::log.info "Identity: ${NPM_IDENTITY}"
+bashio::log.info "MCP:      http://${NPM_MCP_HOST}:${NPM_MCP_PORT}/mcp"
+bashio::log.info "============================================"
+
+exec python3 -m npm_mcp.main

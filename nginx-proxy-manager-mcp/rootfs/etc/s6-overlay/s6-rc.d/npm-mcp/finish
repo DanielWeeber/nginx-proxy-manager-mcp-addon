@@ -1,0 +1,4 @@
+#!/usr/bin/execlineb -S0
+foreground { s6-echo "npm-mcp service stopped" }
+if { s6-test ${1} -ne 0 }
+foreground { s6-echo "npm-mcp exited with error ${1}" }
